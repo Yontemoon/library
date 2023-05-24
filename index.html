@@ -12,27 +12,27 @@
     <button id="addButton" onclick="openPopUp()">Add Book to the library</button>
 
     <div id="popup">
-        <form id="form">
-            <h1>Please fill Everything</h1>
+        <form id="getForm" method="post">
+            <h1>Please Fill Everything</h1>
             <div>
                 <label for="bookTitle">Book title: </label>
-                <input type="text" id="bookTitle">
+                <input type="text" id="bookTitle" placeholder="The Catcher in the Rye">
             </div>
             <div>
                 <label for="bookAuthor">Author: </label>
-                <input type="text" id="author">
+                <input type="text" id="bookAuthor" placeholder="J. D. Salinger">
             </div>
             <div>  
                 <label for="bookPages">Page Amount: </label>
-                <input type="number" id="pageNumber">
+                <input type="number" id="bookPages" placeholder="234">
             </div>
             <div>
                 <label for="read">Have you read the book?</label>
-                <input type="radio" name="yesNo" checked>Yes</input>
-                <input type="radio" name="yesNo">No</input>
+                <input type="radio" name="yesNo" value="Yes"checked>Yes</input>
+                <input type="radio" name="yesNo" value="No">No</input>
             </div>
-            <button type="submit" onclick="addBooktoLibrary()">Submit</button>
-            <button type="button" id='closeBut' onclick="closeForm()">Close</button>
+            <button type="submit">Submit</button>
+            <button type="button" id='closeButton' onclick="closeForm()">Close</button>
         </form>
     </div>
 </body>
