@@ -2,6 +2,9 @@ const addButton = document.querySelector('#addButton');
 const popup = document.getElementById('popup');
 const closeButton = document.getElementById('closeButton');
 let getForm = document.getElementById("getForm");
+const library = document.getElementById("library");
+const titleLib =document.getElementById("titleLib");
+
 
 getForm.addEventListener('submit', function(e){
     e.preventDefault();
@@ -25,9 +28,29 @@ function Book(title, author, pages, read) {
 }
 
 function addBooktoLibrary(title, author, pages, read) {
+    let libraryContent = "";
     const getObject = new Book(title, author, pages, read);
-    myLibrary.push(getObject);
+    let numberOfBooks = myLibrary.push(getObject);
+    // displayLibrary(numberOfBooks);
+
+    for (let i = 0; i < numberOfBooks; i++) {
+        libraryContent += "<p>Title: " + myLibrary[i].title + "</p>";
+        libraryContent += "<p>Author: " + myLibrary[i].author + "</p>";
+        libraryContent += "<p>Pages: " + myLibrary[i].pages + "</p>";
+        libraryContent += "<p>Read: " + myLibrary[i].read + "</p>";
+    }
+
+    library.innerHTML = libraryContent;
 }
+
+// function displayLibrary(numberOfBooks) {
+//     for (let i = 0; i < numberOfBooks; i++) {
+//         console.log(Book.title);
+//         // for (let j = 0; j < myLibrary.length; j++) {
+
+//         // }
+//     }
+// }
 
 function openPopUp() {
     popup.style.display = 'block';
