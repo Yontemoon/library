@@ -7,5 +7,16 @@
 
 #library {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr) auto;
+
+}
+
+#grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr auto;
+}
+
+#buttonRow {
+    display: grid;
+    grid-template-columns: 1fr;
 }
