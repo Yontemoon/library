@@ -26,7 +26,9 @@ getForm.addEventListener('submit', function(e){
 
 
 let myLibrary = [ 
-    {title: 'Mindhunter', author: "John Douglas", pages: 234, read: "Yes"}
+    {title: 'Mindhunter', author: "John Douglas", pages: 234, read: "Yes"},
+    {title: 'Tinker Tailor Soldier Spy', author: "John le Carre", pages: 355, read: "No"},
+    {title: 'Don Quixote', author: "Miguel de Cervantes", pages: 900, read: "No"}
 ];
 
 function Book(title, author, pages, read) {
@@ -36,25 +38,23 @@ function Book(title, author, pages, read) {
     this.read = read;
 }
 
-let numberOfBooks = myLibrary.length;
+
 function addBooktoLibrary(title, author, pages, read) {
-    let libraryContent = "";
+    // let libraryContent = "";
     let titleContent = "";
     let authorContent = "";
     let pagesContent = "";
     let readContent = "";
     let buttonContent = "";
     const getObject = new Book(title, author, pages, read);
-    numberOfBooks = myLibrary.push(getObject); //Returns the length of myLibrary
+    let numberOfBooks = myLibrary.push(getObject); //Returns the length of myLibrary
     for (let i = 0; i < numberOfBooks; i++) {
         titleContent += `<p class=row${i}>Title: ` + myLibrary[i].title + "</p>";
         authorContent += `<p class=row${i}>Author: ` + myLibrary[i].author + "</p>";
         pagesContent += `<p class=row${i}>Pages: ` + myLibrary[i].pages + "</p>";
-        readContent += `<p class=row${i}>Read: ` + myLibrary[i].read + "</p>";
-        // buttonContent += document.createElement('button');
-        
+        readContent += `<p class=row${i} id=row${i}>Read: ` + myLibrary[i].read + `</p>`;
+        readContent += `<button onclick=changeReadStatus(${i}) class =row${i} id=buttonRow${i}>Change Status</button>`;
         buttonContent += `<button onclick=deleteRow(${i}) class=row${i}>Delete</button>`;
-        // buttonContent.setAttribute('id',`buttonID ${i}`);
     }
 
     titleRow.innerHTML = titleContent;
@@ -75,11 +75,22 @@ function closeForm() {
 
 function deleteRow(rowNumber) {
     myLibrary.splice(rowNumber, 1);
-    // numberOfBooks--;
     let deleteRow = document.querySelectorAll(`.row${rowNumber}`);
     deleteRow.forEach(function(everyRow) {
         everyRow.remove();
     })
+}
+
+function changeReadStatus(rowNumber) {
+    let rowStatus = document.getElementById(`row${rowNumber}`)
+    if (myLibrary[rowNumber].read === "Yes") {
+        myLibrary[rowNumber].read = "No";
+        rowStatus.textContent ="Read: No";
+    } else if (myLibrary[rowNumber].read === "No"){
+        myLibrary[rowNumber].read.innerHTML = "Yes";
+        rowStatus.textContent ="Read: Yes";
+    }
+
 }
 
 

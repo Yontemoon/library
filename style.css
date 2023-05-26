@@ -20,3 +20,8 @@
     display: grid;
     grid-template-columns: 1fr;
 }
+
+#readRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
